@@ -21,7 +21,9 @@ app.get('/test', function(request, response) {
 });
 
 app.post('/updateWeight', function(request, response) {
-	console.log(request.body)
+	console.log(request.body);
+	response.json(request.body);
+	//next();
 	
 });
 
