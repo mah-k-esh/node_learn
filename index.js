@@ -57,8 +57,8 @@ app.post('/updateWeight', function(request, response) {
 
 
 // for Facebook verification
-app.get('/webhook/', function (req, res) {
-	response.send('Hello world');
+app.get('/webhook', function (req, res) {
+	res.send('Hello world');
 })
 
 
