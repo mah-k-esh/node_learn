@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
+var test_login = require('test_login');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -52,6 +53,7 @@ app.post('/updateWeight', function(request, response) {
 	//checkout
 
 	//next();
+	test_login.performCheckout({},{},{});
 	
 });
 

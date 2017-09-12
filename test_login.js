@@ -70,24 +70,13 @@ function loginCallBack(parameter){
 	}
 };
 
-login.login({},{},loginCallBack);
+//login.login({},{},loginCallBack);
 
 
 module.exports = {
-	login: function(headers,data,callback_){
+	performCheckout: function(headers,data,callback_){
 
-		var headers = {
-		    //'Authorization': '',
-		    'Content-Type': 'application/json'
-		};
-		var data_login= {
-			"grant_type":"password",
-			"username":"oliver.harris@elasticpath.com",
-			"password":"password",
-			"scope":"mobee",
-			"role":"REGISTERED"
-		};
-		loginCall(headers,data_login,callback_);
+		login.login({},{},loginCallBack);
 	}
 };
 
