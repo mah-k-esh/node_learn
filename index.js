@@ -42,7 +42,7 @@ app.post('/updateWeight', function(request, response) {
 	var deviceId = request.body.deviceId;
 	var weight = request.body.weight;
 
-	cookie_jar_db.updateWeightInDB(weight,deviceId);
+	//cookie_jar_db.updateWeightInDB(weight,deviceId);
 
 	//login
 
