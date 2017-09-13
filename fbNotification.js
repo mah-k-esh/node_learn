@@ -5,21 +5,24 @@ var request = require('request')
 
 
 function fbNotificationCall(headers,data_login,callback_){
-	console.log(constants.EP_ENDPOINT+constants.ADD_TO_CART);
+	console.log(constants.MON_ENDPOINT+constants.FB_NOTIFICATION);
 
 	// Configure the request
 	var options = {
-	    url: constants.EP_ENDPOINT+constants.ADD_TO_CART,
-	    method: 'POST',
-	    headers: headers,
-	    json: data_login
+	    url: constants.MON_ENDPOINT+constants.FB_NOTIFICATION,
+	    method: 'GET',
+	    headers: headers//,
+	    //json: data_login
 	};
 
+	options.url = options.url+"?auth="+data_login.auth+"&sender="+data_login.sender;
+	
 	console.log("options: "+JSON.stringify(options) +"headers: "+headers);
-	if(!headers.url){
-		options.url = headers.url;
-		console.log("url is updated: "+options);
-	}
+	
+	// if(!headers.url){
+	// 	options.url = headers.url;
+	// 	console.log("url is updated: "+options);
+	// }
 
 	// Start the request
 	request(options, function (error, response, body) {
@@ -52,7 +55,8 @@ module.exports = {
 		    'Content-Type': 'application/json'
 		};
 		var data_login= {
-			"quantity": "1"
+			"auth": headers.Authorization,
+			"sender": constants.FB_SENDER
 		};
 		fbNotificationCall(headers,data_login,callback_);
 	}

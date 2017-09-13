@@ -33,6 +33,9 @@ app.get('/test', function(request, response) {
   response.json({speech : "Hey hello"});
 });
 
+
+
+
 app.post('/updateWeight', function(request, response) {
 	console.log(request.body);
 	response.json(request.body);
@@ -43,7 +46,7 @@ app.post('/updateWeight', function(request, response) {
 	var weight = request.body.weight;
 
 	//cookie_jar_db.updateWeightInDB(weight,deviceId);
-
+	console.log();
 	//login
 
 	//add to card
@@ -53,7 +56,7 @@ app.post('/updateWeight', function(request, response) {
 	//checkout
 
 	//next();
-	test_login.performCheckout({},{},{});
+	test_login.performCheckout({},request.body,{});
 	
 });
 
@@ -75,7 +78,6 @@ var server = app.listen(app.get('port'), function() {
 	eventEmitter.on('db_update', function(data){
 	   console.log('db_update '+JSON.stringify(data));
 	});
-
 
 });
 

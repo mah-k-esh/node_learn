@@ -3,7 +3,7 @@ var bodyParser = require('body-parser')
 var request = require('request')
 
 
-function loginCall(headers,data_login,callback_){
+function loginCall(headers,data_login,callback_,data){
 	//console.log(constants.EP_ENDPOINT);
 
 	// Configure the request
@@ -34,6 +34,9 @@ function loginCall(headers,data_login,callback_){
 
 			responseToReturn =  constants.success;
 			responseToReturn.body = jbody;
+
+			responseToReturn.data = data;
+
 			responseToReturn.Authorization = token_type+" "+token;
 
 	    }else{
@@ -63,7 +66,7 @@ module.exports = {
 
 		var headers = {
 		    //'Authorization': '',
-		    'Content-Type': 'application/json'
+		    'Content-Type': 'application/json',
 		};
 		var data_login= {
 			"grant_type":"password",
@@ -72,7 +75,7 @@ module.exports = {
 			"scope":"mobee",
 			"role":"REGISTERED"
 		};
-		loginCall(headers,data_login,callback_);
+		loginCall(headers,data_login,callback_,data);
 	}
 };
 

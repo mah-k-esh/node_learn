@@ -2,11 +2,17 @@ var login = require('./login');
 var addToCart = require("./add_to_cart");
 var lookup = require("./lookup");
 var purchase = require("./purchase");
+var fbNotification = require("./fbNotification");
 
 
 function purchaseCallBack(parameter){
 	if(parameter.state == "success"){
 		console.log("purchaseCallBack: "+JSON.stringify(parameter));
+
+		var headers = {};
+		headers.Authorization = parameter.Authorization;
+
+		fbNotification.fbNotification(headers,{},fbNotificationCallBack);
 
 	}else{
 		console.log("purchaseCallBack: something happened cannot continue"+parameter);
@@ -28,12 +34,11 @@ function lookupCallBack(parameter){
 
 function fbNotificationCallBack(parameter){
 	if(parameter.state == "success"){
-		console.log("lookupCallBack: "+JSON.stringify(parameter));
-		var headers = {};
-		headers.Authorization = parameter.Authorization;
-		addToCart.addItem(headers,{},lookupCallBack);
+		console.log("fbNotificationCallBack: "+JSON.stringify(parameter));
+
+
 	}else{
-		console.log("lookupCallBack: something happened cannot continue"+parameter);
+		console.log("fbNotificationCallBack: something happened cannot continue"+parameter);
 
 	}
 };
@@ -64,7 +69,7 @@ function loginCallBack(parameter){
 		console.log("loginCallBack: "+JSON.stringify(parameter.body));
 		var headers = {};
 		headers.Authorization = parameter.Authorization;
-		addToCart.addItem(headers,{},addToCartCallBack);
+		addToCart.addItem(headers,parameter.data,addToCartCallBack);
 	}else{
 		console.log("something happened cannot continue");
 	}
@@ -76,7 +81,7 @@ function loginCallBack(parameter){
 module.exports = {
 	performCheckout: function(headers,data,callback_){
 
-		login.login({},{},loginCallBack);
+		login.login({},data,loginCallBack);
 	}
 };
 

@@ -1,10 +1,12 @@
-var EP_ENDPOINT = "http://69dfd075.ngrok.io";//"http://e416fccc.ngrok.io";
+var EP_ENDPOINT = "http://e416fccc.ngrok.io";//"http://e416fccc.ngrok.io";
 var EP_LOGIN = "/cortex/oauth2/tokens";
 var DEFAULT_ITEM = "alien_sku";
 var LOOK_UP = "/cortex/lookups/mobee/items?followlocation";
-var ADD_TO_CART = "/cortex/carts/mobee/default/lineitems/items/mobee/qgqvhklbnruwk3s7onvxk=?followlocation&zoom=cart:order:purchaseform"
-
-var FB_NOTIFICATION = "";
+var ADD_TO_CART = "/cortex/carts/mobee/default/lineitems/items/mobee/qgqvhklbnruwk3s7onvxk="
+var ADD_TO_CART_ZOOM = "?followlocation&zoom=cart:order:purchaseform"
+var MON_ENDPOINT = "https://ep-bot.herokuapp.com";
+var FB_NOTIFICATION = "/epOrderDetails";
+var FB_SENDER = "1776994535663035";
 
 var success = {
     state: "success"
@@ -24,5 +26,9 @@ module.exports = {
   failure,
   DEFAULT_ITEM,
   LOOK_UP,
-  ADD_TO_CART
+  ADD_TO_CART,
+  ADD_TO_CART_ZOOM,
+  MON_ENDPOINT,
+  FB_NOTIFICATION,
+  FB_SENDER
 };
