@@ -34,29 +34,28 @@ app.get('/test', function(request, response) {
 });
 
 
+app.get('/placeOrder', function(request, response) {
+  	
+  	var data = {
+  		"_productURL": request.query._productURL
+  	};
+
+	test_login.performCheckout({},data,{});
+	response.json(request.body);
+});
 
 
 app.post('/updateWeight', function(request, response) {
 	console.log(request.body);
-	response.json(request.body);
+	
 
 
 	//update value in the DB
 	var deviceId = request.body.deviceId;
 	var weight = request.body.weight;
 
-	//cookie_jar_db.updateWeightInDB(weight,deviceId);
-	console.log();
-	//login
-
-	//add to card
-
-	//get chekout form
-
-	//checkout
-
-	//next();
 	test_login.performCheckout({},request.body,{});
+	response.json(request.body);
 	
 });
 

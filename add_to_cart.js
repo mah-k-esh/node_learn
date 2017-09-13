@@ -22,7 +22,7 @@ function addItemCall(headers,data_login,callback_,data){
 	}
 
 	if(data._productURL){
-		options.url = constants.EP_ENDPOINT+data._productURL+constants.ADD_TO_CART_ZOOM;
+		options.url = constants.EP_ENDPOINT+constants.ADD_TO_CART_PRE+data._productURL+constants.ADD_TO_CART_ZOOM;
 		console.log("updated url: "+options.url);
 	}
 
