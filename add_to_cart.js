@@ -9,7 +9,7 @@ function addItemCall(headers,data_login,callback_,data){
 
 	// Configure the request
 	var options = {
-	    url: constants.EP_ENDPOINT+constants.ADD_TO_CART+constants.ADD_TO_CART_ZOOM,
+	    url: constants.EP_ENDPOINT+constants.ADD_TO_CART_PRE+constants.ADD_TO_CART+constants.ADD_TO_CART_ZOOM,
 	    method: 'POST',
 	    headers: headers,
 	    json: data_login
@@ -18,7 +18,7 @@ function addItemCall(headers,data_login,callback_,data){
 	//console.log("options: "+JSON.stringify(options) +"headers: "+headers);
 	if(headers._url){
 		options.url = headers._url+constants.ADD_TO_CART_ZOOM;
-		//console.log("url is updated: "+options);
+		console.log("header url is updated: "+options);
 	}
 
 	if(data._productURL){
@@ -48,6 +48,7 @@ function addItemCall(headers,data_login,callback_,data){
 	    	//console.log(error);
 	    	//console.log("error occured: "+response.statusCode);
 			responseToReturn =  constants.failure;
+			responseToReturn.error = error;
 	    }
 
 	    callback_(responseToReturn)

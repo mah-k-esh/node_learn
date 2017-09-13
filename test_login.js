@@ -56,7 +56,7 @@ function addToCartCallBack(parameter){
 		purchase.purchase(headers,{},purchaseCallBack);
 
 	}else{
-		console.log("addToCartCallBack: something happened cannot continue"+parameter);
+		console.log("addToCartCallBack: something happened cannot continue"+JSON.stringify(parameter));
 
 	}
 };
