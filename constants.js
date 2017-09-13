@@ -1,4 +1,4 @@
-var EP_ENDPOINT = "http://e416fccc.ngrok.io";//"http://e416fccc.ngrok.io";
+var EP_ENDPOINT = "http://958019d0.ngrok.io";//"http://e416fccc.ngrok.io";
 var EP_LOGIN = "/cortex/oauth2/tokens";
 var DEFAULT_ITEM = "alien_sku";
 var LOOK_UP = "/cortex/lookups/mobee/items?followlocation";
@@ -7,7 +7,7 @@ var ADD_TO_CART = "qgqvhklbnruwk3s7onvxk="
 var ADD_TO_CART_ZOOM = "?followlocation&zoom=cart:order:purchaseform"
 var MON_ENDPOINT = "https://ep-bot.herokuapp.com";
 var FB_NOTIFICATION = "/epOrderDetails";
-var FB_SENDER = "1776994535663035";
+var FB_SENDER = "1490099814415154";
 
 var success = {
     state: "success"
