@@ -7,7 +7,7 @@ var ADD_TO_CART = "qgqvhklbnruwk3s7onvxk="
 var ADD_TO_CART_ZOOM = "?followlocation&zoom=cart:order:purchaseform"
 var MON_ENDPOINT = "https://ep-bot.herokuapp.com";
 var FB_NOTIFICATION = "/epOrderDetails";
-var FB_SENDER = "100001976987265";
+var FB_SENDER = "1718134594928038";
 
 var success = {
     state: "success"
