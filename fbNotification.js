@@ -4,7 +4,7 @@ var bodyParser = require('body-parser')
 var request = require('request')
 
 
-function fbNotificationCall(headers,data_login,callback_){
+function fbNotificationCall(headers,data_login,callback_,data){
 	console.log(constants.MON_ENDPOINT+constants.FB_NOTIFICATION);
 
 	// Configure the request
@@ -16,7 +16,7 @@ function fbNotificationCall(headers,data_login,callback_){
 	};
 
 	options.url = options.url+"?auth="+data_login.auth+"&sender="+data_login.sender;
-	
+
 	console.log("options: "+JSON.stringify(options) +"headers: "+headers);
 	
 	// if(!headers.url){
@@ -34,6 +34,7 @@ function fbNotificationCall(headers,data_login,callback_){
 
 	        responseToReturn =  constants.success;
 	        responseToReturn.body = body;
+	        responseToReturn.data = data;
 	        responseToReturn.Authorization = headers.Authorization;
 
 	    }else{
@@ -58,7 +59,7 @@ module.exports = {
 			"auth": headers.Authorization,
 			"sender": constants.FB_SENDER
 		};
-		fbNotificationCall(headers,data_login,callback_);
+		fbNotificationCall(headers,data_login,callback_,data);
 	}
 };
 

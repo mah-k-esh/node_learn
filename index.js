@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var test_login = require('./test_login');
 
 app.set('port', (process.env.PORT || 5000));
@@ -50,12 +50,14 @@ app.post('/updateWeight', function(request, response) {
 	
 
 
-	//update value in the DB
+	//update value in the DB//
 	var deviceId = request.body.deviceId;
 	var weight = request.body.weight;
 
-	test_login.performCheckout({},request.body,{});
+	var purchase_response = test_login.performCheckout({},request.body,{});
+	
 	response.json(request.body);
+	
 	
 });
 

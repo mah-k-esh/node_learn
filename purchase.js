@@ -4,8 +4,8 @@ var bodyParser = require('body-parser')
 var request = require('request')
 
 
-function purchaseCall(headers,data_login,callback_){
-	//console.log("purchaseCall: ");
+function purchaseCall(headers,data_login,callback_,data){
+	console.log("purchaseCall: ");
 
 	// Configure the request
 	var options = {
@@ -15,27 +15,28 @@ function purchaseCall(headers,data_login,callback_){
 	    json: data_login
 	};
 
-	//console.log("options: "+JSON.stringify(options) +"headers: "+headers);
+	console.log("options: "+JSON.stringify(options) +"headers: "+headers);
 	if(headers._url){
 		options.url = headers._url;
-		//console.log("url is updated: "+JSON.stringify(options));
+		console.log("url is updated: "+JSON.stringify(options));
 	}
 
 	// Start the request
 	request(options, function (error, response, body) {
-		//console.log("response  "+response);
+		console.log("response  "+response);
 	    if (!error && (response.statusCode == 201 || response.statusCode == 200 || response.statusCode == 203) ) {
 	        // Print out the response body
-	        //console.log("success");
-	        //console.log(body);
+	        console.log("success");
+	        console.log(body);
 
 	        responseToReturn =  constants.success;
 	        responseToReturn.body = body;
+	        responseToReturn.data = data;
 	        responseToReturn.Authorization = headers.Authorization;
 
 	    }else{
-	    	//console.log(error);
-	    	//console.log("error occured: "+response.statusCode);
+	    	console.log(error);
+	    	console.log("error occured: "+response.statusCode);
 			responseToReturn =  constants.failure;
 	    }
 
@@ -54,7 +55,7 @@ module.exports = {
 		var data_login= {
 			
 		};
-		purchaseCall(headers,data_login,callback_);
+		purchaseCall(headers,data_login,callback_,data);
 	}
 };
 

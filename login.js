@@ -4,7 +4,7 @@ var request = require('request')
 
 
 function loginCall(headers,data_login,callback_,data){
-	//console.log(constants.EP_ENDPOINT);
+	console.log(constants.EP_ENDPOINT);
 
 	// Configure the request
 	var options = {
@@ -20,17 +20,17 @@ function loginCall(headers,data_login,callback_,data){
 	request(options, function (error, response, body) {
 	    if (!error && response.statusCode == 200) {
 	        // Print out the response body
-	        //console.log("success");
-	        //console.log(body);
+	        console.log("success");
+	        console.log(body);
 
 	        jbody = JSON.parse(body);
 	        token = jbody.access_token;
 	        token_type = jbody.token_type;
 
-	        //console.log("access_token "+token);
-	        //console.log("token_type "+token_type);
+	        console.log("access_token "+token);
+	        console.log("token_type "+token_type);
 
-	        //console.log(token_type+" "+token);
+	        console.log(token_type+" "+token);
 
 			responseToReturn =  constants.success;
 			responseToReturn.body = jbody;
@@ -40,8 +40,8 @@ function loginCall(headers,data_login,callback_,data){
 			responseToReturn.Authorization = token_type+" "+token;
 
 	    }else{
-	    	//console.log(error);
-	    	//console.log("error occured");
+	    	console.log(error);
+	    	console.log("error occured");
 	    	responseToReturn =  constants.failure;
 	    }
 
@@ -51,12 +51,12 @@ function loginCall(headers,data_login,callback_,data){
 };
 
 // function callback_(parameter){
-// 	//console.log("login.js: callback_: "+JSON.stringify(parameter));
+// 	console.log("login.js: callback_: "+JSON.stringify(parameter));
 // 	if(parameter.state == "success")
 // 	{
-// 		//console.log(parameter);
+// 		console.log(parameter);
 // 	}else{
-// 		//console.log("something happened cannot continue");
+// 		console.log("something happened cannot continue");
 // 	}
 
 // }

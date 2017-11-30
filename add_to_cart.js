@@ -5,7 +5,7 @@ var request = require('request')
 
 
 function addItemCall(headers,data_login,callback_,data){
-	//console.log(constants.EP_ENDPOINT+constants.ADD_TO_CART);
+	console.log(constants.EP_ENDPOINT+constants.ADD_TO_CART);
 
 	// Configure the request
 	var options = {
@@ -15,7 +15,7 @@ function addItemCall(headers,data_login,callback_,data){
 	    json: data_login
 	};
 
-	//console.log("options: "+JSON.stringify(options) +"headers: "+headers);
+	console.log("options: "+JSON.stringify(options) +"headers: "+headers);
 	if(headers._url){
 		options.url = headers._url+constants.ADD_TO_CART_ZOOM;
 		console.log("header url is updated: "+options);
@@ -28,25 +28,25 @@ function addItemCall(headers,data_login,callback_,data){
 
 	// Start the request
 	request(options, function (error, response, body) {
-		//console.log("response  "+response);
+		console.log("response  "+response);
 	    if (!error && (response.statusCode == 201 || response.statusCode == 200 || response.statusCode == 203) ) {
 	        // Print out the response body
-	        //console.log("success");
-	        //console.log(body);
+	        console.log("success");
+	        console.log(body);
 
 	        responseToReturn = constants.success;
 	        //jbody = JSON.parse(body);
 
 	        responseToReturn._url = body["_cart"][0]["_order"][0]["_purchaseform"][0]["links"][0]["href"]+"?followlocation";
 
-	        //console.log("responseToReturn: "+responseToReturn._url);
+	        console.log("responseToReturn: "+responseToReturn._url);
 
 	        responseToReturn =  constants.success;
 	        responseToReturn.Authorization = headers.Authorization;
 
 	    }else{
-	    	//console.log(error);
-	    	//console.log("error occured: "+response.statusCode);
+	    	console.log(error);
+	    	console.log("error occured: "+response.statusCode);
 			responseToReturn =  constants.failure;
 			responseToReturn.error = error;
 	    }

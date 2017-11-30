@@ -12,7 +12,7 @@ function purchaseCallBack(parameter){
 		var headers = {};
 		headers.Authorization = parameter.Authorization;
 
-		fbNotification.fbNotification(headers,{},fbNotificationCallBack);
+		fbNotification.fbNotification(headers,parameter.data,fbNotificationCallBack);
 
 	}else{
 		console.log("purchaseCallBack: something happened cannot continue"+parameter);
@@ -36,6 +36,7 @@ function fbNotificationCallBack(parameter){
 	if(parameter.state == "success"){
 		console.log("fbNotificationCallBack: "+JSON.stringify(parameter));
 
+		parameter.data();
 
 	}else{
 		console.log("fbNotificationCallBack: something happened cannot continue"+parameter);
@@ -53,7 +54,7 @@ function addToCartCallBack(parameter){
 		var headers = {};
 		headers.Authorization = parameter.Authorization;
 		headers.url = parameter._url;
-		purchase.purchase(headers,{},purchaseCallBack);
+		purchase.purchase(headers,parameter.data,purchaseCallBack);
 
 	}else{
 		console.log("addToCartCallBack: something happened cannot continue"+JSON.stringify(parameter));
@@ -80,7 +81,7 @@ function loginCallBack(parameter){
 
 module.exports = {
 	performCheckout: function(headers,data,callback_){
-
+		data.callback = callback_;
 		login.login({},data,loginCallBack);
 	}
 };
