@@ -1,4 +1,4 @@
-var EP_ENDPOINT = "http://4c00070e.ngrok.io";//"http://e416fccc.ngrok.io";
+var EP_ENDPOINT = "http://6f0ef5be.ngrok.io";//"http://e416fccc.ngrok.io";
 var EP_LOGIN = "/cortex/oauth2/tokens";
 var DEFAULT_ITEM = "alien_sku";
 var LOOK_UP = "/cortex/lookups/mobee/items?followlocation";
